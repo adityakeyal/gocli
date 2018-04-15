@@ -38,7 +38,7 @@ func Execute() {
 		for _, x := range rootCmd.SubCommand {
 
 			if subCommand == x.Name {
-				x.Execute(nil)
+				x.Execute(args)
 				isExecuted = true
 				break
 			}

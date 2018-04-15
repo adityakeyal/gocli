@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"flag"
 	"fmt"
 
 	"github.com/adityakeyal/gocli/command"
@@ -15,7 +16,27 @@ var newlist = &command.Command{
 }
 
 func listExecute(args []string) {
-	fmt.Println("In list_execute")
+	flags := parseArguments(args)
+
+	fmt.Println(*flags.all)
+	fmt.Println(*flags.name)
+
+}
+
+type listFlag struct {
+	all  *bool
+	name *string
+}
+
+func parseArguments(args []string) listFlag {
+	var flags listFlag
+
+	listCommand := flag.NewFlagSet("list", flag.ExitOnError)
+	flags.name = listCommand.String("name", "", "Name of the command")
+	flags.all = listCommand.Bool("all", false, "List All")
+	listCommand.Parse(args[1:])
+
+	return flags
 }
 
 func init() {
