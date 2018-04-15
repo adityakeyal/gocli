@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/adityakeyal/cobratest/command"
+	"github.com/adityakeyal/gocli/command"
 )
 
 //var cfgFile string

@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/adityakeyal/cobratest/command"
+	"github.com/adityakeyal/gocli/command"
 )
 
 var newlist = &command.Command{

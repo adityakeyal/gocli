@@ -15,7 +15,7 @@
 package main
 
 import (
-	"github.com/adityakeyal/cobratest/cmd"
+	"github.com/adityakeyal/gocli/cmd"
 )
 
 func main() {
