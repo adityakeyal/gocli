@@ -40,5 +40,5 @@ func parseArguments(args []string) listFlag {
 }
 
 func init() {
-	rootCmd.AddCommand(newlist)
+	command.RootCmd.AddCommand(newlist)
 }

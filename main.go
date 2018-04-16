@@ -14,11 +14,9 @@
 
 package main
 
-import (
-	"github.com/adityakeyal/gocli/cmd"
-)
+import "github.com/adityakeyal/gocli/command"
 
 func main() {
 
-	cmd.Execute()
+	command.Execute()
 }
