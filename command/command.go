@@ -14,6 +14,7 @@ type Command struct {
 	Long       string
 	Execute    func(args []string)
 	SubCommand []*Command
+	SubHelp    func() string
 }
 
 //AddCommand - Command
@@ -108,5 +109,8 @@ func printCommandOptions() {
 		}
 
 		fmt.Println("  > " + x.Name + defaultHelp + " [" + x.Short + "] : " + x.Long)
+		if x.SubHelp != nil {
+			fmt.Println(x.SubHelp())
+		}
 	}
 }
