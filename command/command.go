@@ -86,9 +86,16 @@ func checkDefaultCommand(args []string) {
 func checkIfHelp(args []string, command *Command) {
 	for _, x := range args {
 		if x == "--help" || x == "-h" {
-			fmt.Println(command.Name)
-			fmt.Println(command.Short)
-			fmt.Println(command.Long)
+
+			fmt.Println("Usage:")
+			fmt.Println("<appname> [Command]")
+			fmt.Println("")
+			fmt.Println("Available Commands:")
+
+			fmt.Println("  > " + command.Name + " [" + command.Short + "] : " + command.Long)
+			if command.SubHelp != nil {
+				fmt.Println(command.SubHelp())
+			}
 
 		}
 	}
@@ -97,7 +104,7 @@ func checkIfHelp(args []string, command *Command) {
 func printCommandOptions() {
 
 	fmt.Println("Usage:")
-	fmt.Println("<appname> command")
+	fmt.Println("<appname> [Command]")
 	fmt.Println("")
 	fmt.Println("Available Commands:")
 
