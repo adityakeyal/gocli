@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"flag"
-	"fmt"
 
 	"github.com/adityakeyal/gocli/command"
 )
@@ -16,10 +15,10 @@ var newlist = &command.Command{
 }
 
 func listExecute(args []string) {
-	flags := parseArguments(args)
+	// flags := parseArguments(args)
 
-	fmt.Println(*flags.all)
-	fmt.Println(*flags.name)
+	// fmt.Println(*flags.all)
+	// fmt.Println(*flags.name)
 
 }
 
@@ -40,5 +39,10 @@ func parseArguments(args []string) listFlag {
 }
 
 func init() {
-	command.RootCmd.AddCommand(newlist)
+	command.RootCmd.AddDefaultCommand(newlist)
+}
+
+//Execute
+func Execute() {
+	command.Execute()
 }

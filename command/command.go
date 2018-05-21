@@ -1,6 +1,7 @@
 package command
 
 import (
+	"fmt"
 	"os"
 )
 
@@ -39,6 +40,7 @@ func Execute() {
 		for _, x := range RootCmd.SubCommand {
 
 			if subCommand == x.Name {
+				checkIfHelp(args, x)
 				x.Execute(args)
 				isExecuted = true
 				break
@@ -47,7 +49,8 @@ func Execute() {
 		}
 
 		if !isExecuted {
-			panic("Invalid option")
+			//print Default command options
+			printCommandOptions()
 		}
 
 	} else {
@@ -76,5 +79,34 @@ func checkDefaultCommand(args []string) {
 			x.Execute(args)
 			break
 		}
+	}
+}
+
+func checkIfHelp(args []string, command *Command) {
+	for _, x := range args {
+		if x == "--help" || x == "-h" {
+			fmt.Println(command.Name)
+			fmt.Println(command.Short)
+			fmt.Println(command.Long)
+
+		}
+	}
+}
+
+func printCommandOptions() {
+
+	fmt.Println("Usage:")
+	fmt.Println("<appname> command")
+	fmt.Println("")
+	fmt.Println("Available Commands:")
+
+	for _, x := range RootCmd.SubCommand {
+
+		defaultHelp := ""
+		if x.Default {
+			defaultHelp = " (default)"
+		}
+
+		fmt.Println("  > " + x.Name + defaultHelp + " [" + x.Short + "] : " + x.Long)
 	}
 }
